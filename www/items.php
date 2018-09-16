@@ -7,5 +7,5 @@ $task = new Panorama();
 
 
 
-echo $task->getItems($_GET['id']);
+echo $task->getItems($_GET['grid']);
 
