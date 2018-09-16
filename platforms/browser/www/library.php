@@ -37,9 +37,9 @@ class Panorama
 	
 	}
 	
-		public function getItems($id) {
+	public function getItems($id) {
 		
-		$query = $this->db->query('SELECT * FROM ART WHERE GR_ART ='.$id.'');
+		$query = $this->db->query('SELECT * FROM ART WHERE GR_ART ='.$id.' AND CENA_ART > 0');
 		$query->execute();
 		$data = array();
 		while($row = $query->fetch(PDO::FETCH_ASSOC)) {

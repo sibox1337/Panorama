@@ -1,0 +1,62 @@
+<div id="myCarousel" ng-controller="GroupController" class="carousel slide" data-interval="0">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div ng-repeat="group in groups.slice(0,12)" class="col-sm-3 col-xs-6">
+                    <a  ng-href="#/items/{{group.ID_GR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{group.IMEGR}}</a>
+                  </div>
+                  
+                </div>
+                <!--/row-->
+              </div>
+              <!--/item-->
+              <div class="carousel-item">
+                <div class="row">
+                  
+                  <div ng-repeat="group in groups.slice(12,24)" class="col-sm-3 col-xs-6">
+                    <a  ng-href="#/items/{{group.ID_GR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{group.IMEGR}}</a>
+                  </div>
+                </div>
+                <!--/row-->
+              </div>
+              <div class="carousel-item">
+              <!--/item-->
+              <div class="row">
+                  
+                  <div ng-repeat="group in groups.slice(24,36)" class="col-sm-3 col-xs-6">
+                    <a  ng-href="#/items/{{group.ID_GR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{group.IMEGR}}</a>
+                  </div>
+                </div>
+                </div>
+                <div class="carousel-item">
+              <!--/item-->
+              <div class="row">
+                  
+                  <div ng-repeat="group in groups.slice(36,48)" class="col-sm-3 col-xs-6">
+                    <a  ng-href="#/items/{{group.ID_GR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{group.IMEGR}}</a>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <!--/carousel-inner-->
+            
+          </div>
+          <script src="js/jquery.touchSwipe.min.js"></script>
+    <script>
+      $('#myCarousel').carousel({
+                  // Options
+              });
+              
+              $(function() {
+      
+        $("#myCarousel").swipe({
+          swipeRight: function() {
+            $(this).carousel('prev')
+          },
+          swipeLeft: function() {
+            $(this).carousel('next')
+          }
+        });
+      });
+    </script>

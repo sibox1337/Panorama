@@ -3,22 +3,22 @@ var app = angular.module('PanApp',['ngRoute']);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "blank.html",
+        templateUrl : "groups.html",
         controller: "GroupController"
        
     })
-    .when("/items", {
+    .when("/items/:id", {
         templateUrl : "items.html",
         controller: "ItemsController"
     });
 });
 
-app.controller('GroupController',['$scope','$http',function($scope,$http) {
+app.controller('GroupController',['$scope','$http','$route',function($scope,$http,$route) {
 		$scope.groups = [];
-		
 		$scope.grid;
+
 		$scope.listGroups = function() {
-			
+		
 			
 			
 			$http.get('http://192.168.1.101/Panorama/Panorama/www/list.php', {})
@@ -26,7 +26,7 @@ app.controller('GroupController',['$scope','$http',function($scope,$http) {
 					
 				$scope.groups = e.data.groups;
 					}, function error(e) {
-						alert('error');
+						alert(e);
 					});
 				
 			
@@ -42,9 +42,9 @@ app.controller('ItemsController',['$scope','$http','$routeParams',function($scop
 		$scope.items = [];
 
 		$scope.getItems = function() {
-			alert($routeParams.id);
-			$http.get('http://192.168.1.101//Panorama/Panorama/www/items.php?grid=' + url[1], {})
+			$http.get('http://192.168.1.101/Panorama/Panorama/www/items.php?grid=' + $routeParams.id, {})
 				.then(function success(e) {
+					
 					$scope.items = e.data.items;
 					}, function error(e) {
 						
