@@ -1,3 +1,4 @@
+<<<<<<< HEAD
           <div id="myCarousel" ng-controller="ItemsController" class="carousel slide" data-interval="0">
             <!-- Carousel items -->
             <div class="carousel-inner">
@@ -60,4 +61,68 @@
         });
       });
     </script>
+=======
+          <div id="myCarousel" ng-controller="ItemsController" class="carousel slide" data-interval="0">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div ng-repeat="item in items.slice(0,12)" class="col-sm-3 col-xs-6">
+                    <a href="{{item.ID_AR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{item.IME_ART}}</a>
+                  </div>
+                  
+                </div>
+                <!--/row-->
+              </div>
+              <!--/item-->
+              <div class="carousel-item" ng-if="items.slice(12,24).length > 0">
+                <div class="row">
+                  
+                  <div  ng-repeat="item in items.slice(12,24)" class="col-sm-3 col-xs-6">
+                    <a style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{item.IME_ART}}</a>
+                  </div>
+                </div>
+                <!--/row-->
+              </div>
+              <div class="carousel-item" ng-if="items.slice(24,36).length > 0">
+              <!--/item-->
+              <div class="row">
+                  
+                  <div  ng-repeat="item in items.slice(24,36)" class="col-sm-3 col-xs-6">
+                    <a href="{{item.ID_AR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{item.IME_ART}}</a>
+                  </div>
+                </div>
+                </div>
+                <div class="carousel-item" ng-if="items.slice(36,48).length > 0">
+              <!--/item-->
+              <div class="row">
+                  
+                  <div ng-repeat="group in groups.slice(36,48)" class="col-sm-3 col-xs-6">
+                    <a href="{{group.ID_GR}}" style="display:block;background:green;max-width:100%;min-height:100px;text-align:center;vertical-align:middle;padding-top:20px;font-weight:bold;color:#FFF;" class="mb-1">{{group.IMEGR}}</a>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <!--/carousel-inner-->
+          </div>
+
+<script src="js/jquery.touchSwipe.min.js"></script>
+    <script>
+      $('#myCarousel').carousel({
+                  // Options
+              });
+              
+              $(function() {
+      
+        $("#myCarousel").swipe({
+          swipeRight: function() {
+            $(this).carousel('prev')
+          },
+          swipeLeft: function() {
+            $(this).carousel('next')
+          }
+        });
+      });
+    </script>
+>>>>>>> fb8818c3c529d5503704a640d3948645e195b14a
   
