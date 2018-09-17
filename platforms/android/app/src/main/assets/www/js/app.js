@@ -10,7 +10,15 @@ app.config(function($routeProvider) {
     .when("/items/:id", {
         templateUrl : "items.html",
         controller: "ItemsController"
-    });
+    })
+    .when('/mods', {
+    		templateUrl: "mods.html",
+    		controller: "ModsController"
+			})
+	.when('items/:iditem/insert/table/:idtable', {
+			templateUrl: "items_insert.html",
+			controller:  "InsertController"
+			});
 });
 
 app.controller('GroupController',['$scope','$http','$route',function($scope,$http,$route) {
@@ -40,7 +48,7 @@ app.controller('GroupController',['$scope','$http','$route',function($scope,$htt
 		
 app.controller('ItemsController',['$scope','$http','$routeParams',function($scope,$http,$routeParams) {
 		$scope.items = [];
-
+		$scope.params = $routeParams.id;
 		$scope.getItems = function() {
 			$http.get('http://192.168.1.101/Panorama/Panorama/www/items.php?grid=' + $routeParams.id, {})
 				.then(function success(e) {
@@ -53,4 +61,30 @@ app.controller('ItemsController',['$scope','$http','$routeParams',function($scop
 		};
 		$scope.getItems();
 	
+		}]);
+		
+app.controller('ModsController',['$scope','$http',function($scope,$http) {
+		$scope.mods = [];
+
+		$scope.listMods = function() {
+		
+			
+			
+			$http.get('http://192.168.1.101/Panorama/Panorama/www/mods.php', {})
+				.then(function success(e) {
+					
+				$scope.mods = e.data.mods;
+					}, function error(e) {
+						alert(e);
+					});
+				
+			
+			
+		};
+		$scope.listMods();
+	
+		}]);
+		
+app.controller('InsertController',['$scope','$http','$routeParams',function($scope,$http,$routeParams) {
+			$scope.$routeParams = $routeParams;
 		}]);

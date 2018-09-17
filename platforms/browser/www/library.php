@@ -52,6 +52,23 @@ class Panorama
 
 		
 	}
+	
+	public function getMods() {
+		
+		$query = $this->db->query('SELECT * FROM ART WHERE MOD = 1');
+		$query->execute();
+		$data = array();
+		while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+			
+			$data[] = mb_convert_encoding($row,'utf-8','windows-1251');
+			
+		}
+		
+		return json_encode(['mods'	=> $data]);
+	}
+	
+	
+
 
 }
 	
