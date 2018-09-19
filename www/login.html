@@ -1,0 +1,10 @@
+
+    <input type="text" data-ng-model="numbers">
+
+<!-- Define the keypad: -->
+<bc-keypad 
+bc-number-model="numbers"
+bc-left-button="backspace"
+bc-right-button="submit"
+bc-right-button-method="submit($event,$numbers)"></bc-keypad>
+
