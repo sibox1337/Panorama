@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
 			})
 	.when('items/:iditem/insert/table/:idtable', {
 			templateUrl: "items_insert.html",
-			controller:  "InsertController"
+			controller:  "ItemsController"
 			});
 });
 
@@ -59,8 +59,29 @@ app.controller('ItemsController',['$scope','$http','$routeParams',function($scop
 					});
 			
 		};
+		
+		
 		$scope.getItems();
-	
+		
+		$scope.insertTobon = function($params) {
+			
+			$http({
+				method: 'post',
+				url: 'http://192.168.1.101/Panorama/Panorama/www/add_items.php',
+				
+				data: {
+					itemid: $params,
+			
+						},
+				
+				
+					}).success(function(response) {
+						console.log(response);
+					}).error(function(response) {
+						console.log(response);	
+					});
+			
+		};
 		}]);
 		
 app.controller('ModsController',['$scope','$http',function($scope,$http) {
@@ -85,6 +106,3 @@ app.controller('ModsController',['$scope','$http',function($scope,$http) {
 	
 		}]);
 		
-app.controller('InsertController',['$scope','$http','$routeParams',function($scope,$http,$routeParams) {
-			$scope.$routeParams = $routeParams;
-		}]);

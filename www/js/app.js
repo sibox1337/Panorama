@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
 			})
 	.when('items/:iditem/insert/table/:idtable', {
 			templateUrl: "items_insert.html",
-			controller:  "InsertController"
+			controller:  "ItemsController"
 			});
 });
 
@@ -29,7 +29,7 @@ app.controller('GroupController',['$scope','$http','$route',function($scope,$htt
 		
 			
 			
-			$http.get('http://192.168.1.101/Panorama/Panorama/www/list.php', {})
+			$http.get('http://213.169.53.78/Panorama/Panorama/www/list.php', {})
 				.then(function success(e) {
 					
 				$scope.groups = e.data.groups;
@@ -50,7 +50,7 @@ app.controller('ItemsController',['$scope','$http','$routeParams',function($scop
 		$scope.items = [];
 		$scope.params = $routeParams.id;
 		$scope.getItems = function() {
-			$http.get('http://192.168.1.101/Panorama/Panorama/www/items.php?grid=' + $routeParams.id, {})
+			$http.get('http://213.169.53.78/Panorama/Panorama/www/items.php?grid=' + $routeParams.id, {})
 				.then(function success(e) {
 					
 					$scope.items = e.data.items;
@@ -59,8 +59,29 @@ app.controller('ItemsController',['$scope','$http','$routeParams',function($scop
 					});
 			
 		};
+		
+		
 		$scope.getItems();
-	
+		
+		$scope.insertTobon = function($params) {
+			
+			$http({
+				method: 'post',
+				url: 'http://213.169.53.78/Panorama/Panorama/www/add_items.php',
+				
+				data: {
+					itemid: $params,
+			
+						},
+				
+				
+					}).success(function(response) {
+						console.log(response);
+					}).error(function(response) {
+						console.log(response);	
+					});
+			
+		};
 		}]);
 		
 app.controller('ModsController',['$scope','$http',function($scope,$http) {
@@ -70,7 +91,7 @@ app.controller('ModsController',['$scope','$http',function($scope,$http) {
 		
 			
 			
-			$http.get('http://192.168.1.101/Panorama/Panorama/www/mods.php', {})
+			$http.get('http://213.169.53.78/Panorama/Panorama/www/mods.php', {})
 				.then(function success(e) {
 					
 				$scope.mods = e.data.mods;
@@ -85,6 +106,3 @@ app.controller('ModsController',['$scope','$http',function($scope,$http) {
 	
 		}]);
 		
-app.controller('InsertController',['$scope','$http','$routeParams',function($scope,$http,$routeParams) {
-			$scope.$routeParams = $routeParams;
-		}]);
